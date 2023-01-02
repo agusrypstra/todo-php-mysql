@@ -16,6 +16,15 @@ switch ($params[0]) {
     case 'home':
         showHome();
         break;
+    case 'createTask':
+        createTask();
+        break;
+    case 'deleteTask':
+        deleteTask($params[1]);
+        break;
+    case 'updateTask':
+        updateTask($params[1]);
+        break;
     case 'about':
         showAbout();
         break;

@@ -2,7 +2,7 @@
 require_once('db.php');
 function showIndex()
 {
-    echo '<!DOCTYPE html>
+  echo '<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />

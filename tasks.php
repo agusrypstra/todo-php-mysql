@@ -2,7 +2,7 @@
 require_once('db.php');
 function showHome()
 {
-    $html = '
+  $html = '
     <html lang="en">
       <head>
         <base href="' . BASE_URL . '" />
@@ -14,11 +14,11 @@ function showHome()
       </head>
       <body>
         <div class="container">
-          <form method="post" action="router.php">
+          <form method="post" action="createTask">
             <h2>Enter your task</h2>
-            <input type="text" placeholder="Title" />
-            <input type="text" placeholder="Description" />
-            <input type="text" placeholder="Priority" />
+            <input name="title" type="text" placeholder="Title" />
+            <input name="description" type="text" placeholder="Description" />
+            <input name="priority" type="text" placeholder="Priority" />
             <label for="finished">Finished</label>
             <input name="finished" type="checkbox" placeholder="Finished" />
             <button>Add</button>
@@ -26,22 +26,22 @@ function showHome()
           <div>
             <h2>My list</h2>
             <ul>';
-    $tasks = getTasks();
-    foreach ($tasks as $task) {
-        $html .= '<li>' . $task->title . '</li>';
+  $tasks = getTasks();
+  foreach ($tasks as $task) {
+    $html .= '<li>' . $task->title . ' - <a href="deleteTask/' . $task->id_task . '">Delete</a> - ' . '<a href="updateTask/' . $task->id_task . '">Update </a>' . '</li>';
 
-    }
-    $html .= '</ul>
+  }
+  $html .= '</ul>
           </div>
         </div>
       </body>
     </html>
     ';
-    echo $html;
+  echo $html;
 }
 function showAbout()
 {
-    echo '<!DOCTYPE html>
+  echo '<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -54,4 +54,25 @@ function showAbout()
       </body>
     </html>
     ';
+}
+
+function createTask()
+{
+  if (!isset($_POST['finished'])) {
+    $finished = 0;
+  } else {
+    $finished = 1;
+  }
+  createTaskDB($_POST["title"], $_POST["description"], $_POST["priority"], $finished);
+  header("Location: home");
+}
+function deleteTask($id)
+{
+  deleteTaskDB($id);
+  header("Location:" . BASE_URL . "home");
+}
+function updateTask($id)
+{
+  updateTaskDB($id);
+  header("Location:" . BASE_URL . "home");
 }
