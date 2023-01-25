@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
-<h1 class="">
-    {$title}
+<h1 class="text-center m-5">
+    {$title|upper}
 </h1>
 <div class="container text-center">
     <div class="row">
@@ -54,7 +54,7 @@
                 {if $task->finished}
                     <div class="card m-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{$task->title}</h5>
+                            <h5 class="card-title">{$task->title|upper}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Order n° {$task->id_task}</h6>
                             <p class="card-text">{$task->description}</p>
                             <p>{$task->priority}</p>

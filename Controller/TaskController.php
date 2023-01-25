@@ -1,7 +1,6 @@
 <?php
 require_once('./Model/TaskModel.php');
 require_once('./View/TaskView.php');
-require_once('libs/smarty-4.2.1/libs/Smarty.class.php');
 class TaskController
 {
     private $model;

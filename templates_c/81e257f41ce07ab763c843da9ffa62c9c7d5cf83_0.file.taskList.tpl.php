@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-01-23 03:38:24
+/* Smarty version 4.2.1, created on 2023-01-23 19:24:35
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\taskList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_63cdf32006cec9_11788683',
+  'unifunc' => 'content_63ced0e343c518_26754342',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81e257f41ce07ab763c843da9ffa62c9c7d5cf83' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\taskList.tpl',
-      1 => 1674441503,
+      1 => 1674498274,
       2 => 'file',
     ),
   ),
@@ -22,11 +22,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_63cdf32006cec9_11788683 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63ced0e343c518_26754342 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<h1 class="">
-    <?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+<h1 class="text-center m-5">
+    <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['title']->value ?? '', 'UTF-8');?>
 
 </h1>
 <div class="container text-center">
@@ -100,7 +100,7 @@ $_smarty_tpl->tpl_vars['task']->do_else = false;
                 <?php if ($_smarty_tpl->tpl_vars['task']->value->finished) {?>
                     <div class="card m-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['task']->value->title;?>
+                            <h5 class="card-title"><?php echo mb_strtoupper($_smarty_tpl->tpl_vars['task']->value->title ?? '', 'UTF-8');?>
 </h5>
                             <h6 class="card-subtitle mb-2 text-muted">Order n° <?php echo $_smarty_tpl->tpl_vars['task']->value->id_task;?>
 </h6>

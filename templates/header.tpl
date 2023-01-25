@@ -11,6 +11,3 @@
       crossorigin="anonymous"
     />
     <title>To Do List</title>
-  </head>
-  <body>
-    <h1>My to do list</h1>
