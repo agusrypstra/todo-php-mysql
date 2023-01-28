@@ -1,8 +1,8 @@
 <?php
 require_once('libs\smarty-4.2.1\libs\Smarty.class.php');
-require_once('./Controller/UserController.php');
+require_once('./Controller/LoginController.php');
 
-class UserView
+class LoginView
 {
     function __construct()
     {
@@ -20,4 +20,13 @@ class UserView
         $smarty->display('../templates/register.tpl');
 
     }
+    function showLoginLocation()
+    {
+        header("Location:" . BASE_URL . "login");
+    }
+    function showHomeLocation()
+    {
+        header("Location:" . BASE_URL . "home");
+    }
+
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-01-23 18:42:29
+/* Smarty version 4.2.1, created on 2023-01-26 19:04:19
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_63cec7052942f0_10490789',
+  'unifunc' => 'content_63d2c0a3916081_06902618',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5aabbfc4e7e77ef8ffbf55c5c272b84bf9987018' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\header.tpl',
-      1 => 1674495745,
+      1 => 1674756166,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63cec7052942f0_10490789 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63d2c0a3916081_06902618 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,5 +33,8 @@ function content_63cec7052942f0_10490789 (Smarty_Internal_Template $_smarty_tpl)
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <title>To Do List</title><?php }
+    
+  </head>
+</html>
+<?php }
 }

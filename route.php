@@ -1,6 +1,7 @@
 <?php
 require_once('Controller/TaskController.php');
-require_once('Controller/UserController.php');
+require_once('Controller/LoginController.php');
+require_once('Helpers/AuthHelper.php');
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -11,23 +12,27 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 $taskController = new TaskController();
-$userController = new UserController();
+$loginController = new LoginController();
+$authHelper = new AuthHelper();
 
 switch ($params[0]) {
     case 'home':
         $taskController->showHome();
         break;
     case 'login':
-        $userController->showLogin();
+        $loginController->showLogin();
+        break;
+    case 'logout':
+        $authHelper->logout();
         break;
     case 'register':
-        $userController->showRegister();
+        $loginController->showRegister();
         break;
     case 'verifyLogin':
-        $userController->verifyLogin();
+        $loginController->verifyLogin();
         break;
     case 'verifyRegistration':
-        $userController->verifyRegistration();
+        $loginController->verifyRegistration();
         break;
     case 'createTask':
         $taskController->createTask();

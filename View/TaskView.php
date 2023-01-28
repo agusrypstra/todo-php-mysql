@@ -7,10 +7,11 @@ class TaskView
     {
 
     }
-    function showHome($tasks)
+    function showHome($tasks, $categories)
     {
         $smarty = new Smarty();
         $smarty->assign('tasks', $tasks);
+        $smarty->assign('categories', $categories);
         $smarty->assign('title', "To do list");
         $smarty->display('../templates/taskList.tpl');
     }
@@ -39,12 +40,18 @@ class TaskView
                 <p>' . $task->description . '</p>
                 <h3>Priority:' . $task->priority . '</h3>
                 <h3>Finished:' . $task->finished . '</h3>
+                <h3>Category:' . $task->name . '</h3>
+
             </div>'
         );
     }
     function showHomeLocation()
     {
-        header("Location: home");
+        header("Location:" . BASE_URL . "home");
     }
-    
+    function showLoginLocation()
+    {
+        header("Location:" . BASE_URL . "login");
+    }
+
 }

@@ -1,16 +1,16 @@
 <?php
-require_once("./Model/UserModel.php");
-require_once("./View/UserView.php");
+require_once("./Model/LoginModel.php");
+require_once("./View/LoginView.php");
 
-class UserController
+class LoginController
 {
     private $model;
     private $view;
 
     function __construct()
     {
-        $this->model = new UserModel();
-        $this->view = new UserView();
+        $this->model = new LoginModel();
+        $this->view = new LoginView();
     }
     function showLogin()
     {
@@ -20,10 +20,14 @@ class UserController
     {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $user = $this->model->getUser($_POST['email']);
-            if ($user->password == $_POST['password']) {
-                echo 'Login succesfull';
+            if (password_verify($_POST['password'], $user->password)) {
+                session_start();
+                $_SESSION['username'] = $_POST['email'];
+                $this->view->showHomeLocation();
+                echo 'pass ok';
             } else {
-                echo 'Login failed';
+                $this->view->showLoginLocation();
+                echo 'error';
             }
         }
     }
@@ -37,6 +41,8 @@ class UserController
             $email = $_POST['email'];
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
             $this->model->insertUser($email, $password);
+            $this->view->showLoginLocation();
         }
     }
+
 }

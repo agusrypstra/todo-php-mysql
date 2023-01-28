@@ -1,7 +1,7 @@
 <?php
-require_once('./Controller/UserController.php');
+require_once('./Controller/LoginController.php');
 
-class UserModel
+class LoginModel
 {
     private $db;
 
