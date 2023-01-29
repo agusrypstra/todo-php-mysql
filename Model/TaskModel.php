@@ -40,11 +40,8 @@ class TaskModel
         $task = $query->fetch(PDO::FETCH_OBJ);
         return $task;
     }
-    // function getTaskByType($type){
-    //     $query = $this->db->prepare("SELECT ")
-    // }
     function createTaskDB($title, $description, $priority, $finished, $category)
-    {   
+    {
         $query = $this->db->prepare("INSERT INTO tasks(title, description, priority, finished, id_category) VALUES(?,?,?,?,?)");
         $query->execute(array($title, $description, $priority, $finished, $category));
     }

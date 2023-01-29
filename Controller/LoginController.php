@@ -44,5 +44,4 @@ class LoginController
             $this->view->showLoginLocation();
         }
     }
-
 }
