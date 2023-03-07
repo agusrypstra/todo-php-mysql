@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-02-02 16:31:36
-  from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\header.tpl' */
+/* Smarty version 4.2.1, created on 2023-02-13 19:32:19
+  from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\layout\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_63dbd758f36a12_54621240',
+  'unifunc' => 'content_63ea8233500e04_58919162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '5aabbfc4e7e77ef8ffbf55c5c272b84bf9987018' => 
+    'fcc60eca1a468435ce8297ca7f5c8cf49d72770c' => 
     array (
-      0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\header.tpl',
+      0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\layout\\header.tpl',
       1 => 1675351895,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63dbd758f36a12_54621240 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63ea8233500e04_58919162 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 

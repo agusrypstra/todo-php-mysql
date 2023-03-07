@@ -7,51 +7,44 @@ class TaskView
     {
 
     }
-    function showHome($tasks, $categories)
+    function showHome($tasks, $categories, $role, $username, $message = null)
     {
         $smarty = new Smarty();
         $smarty->assign('tasks', $tasks);
         $smarty->assign('categories', $categories);
-        $smarty->assign('title', "To do list");
-        $smarty->display('../templates/taskList.tpl');
+        $smarty->assign('role', $role);
+        $smarty->assign('username', $username);
+        $smarty->assign('message', $message);
+        $smarty->assign('title', "WORKSHOP TASKS");
+        $smarty->display('../templates/layout/home.tpl');
+    }
+    function showHomeLayout()
+    {
+        $smarty = new Smarty();
+        $smarty->display('../templates/tasks/taskLayoutCSR.tpl');
+
     }
     function showAbout()
     {
-        echo '<!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>About</title>
-                </head>
-                <body>
-                    <h1>About page</h1>
-                </body>
-                </html>
-                ';
+        $smarty = new Smarty();
+        $smarty->display('../templates/about.tpl');
     }
     function showTask($task)
     {
-        echo (
-            '<div class="card">
-                <h1>' . $task->title . '</h1>
-                <h3>Description:</h3>
-                <p>' . $task->description . '</p>
-                <h3>Priority:' . $task->priority . '</h3>
-                <h3>Finished:' . $task->finished . '</h3>
-                <h3>Category:' . $task->name . '</h3>
-
-            </div>'
-        );
+        $smarty = new Smarty();
+        $smarty->assign('task', $task);
+        $smarty->display('../templates/tasks/task.tpl');
     }
     function showHomeLocation()
     {
-        header("Location:" . BASE_URL . "home");
+        $smarty = new Smarty();
+        $smarty->display("../templates/tasks/taskList.tpl");
     }
-    function showLoginLocation()
+    function showLogin($message = null)
     {
-        header("Location:" . BASE_URL . "login");
+        $smarty = new Smarty();
+        $smarty->assign("message", $message);
+        $smarty->display("../templates/user/login.tpl");
     }
 
 }

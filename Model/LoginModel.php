@@ -24,7 +24,20 @@ class LoginModel
     }
     function insertUser($userEmail, $userPassword)
     {
-        $query = $this->db->prepare("INSERT INTO users(email,password) VALUES(?,?)");
-        $query->execute(array($userEmail, $userPassword));
+        try {
+            $validateQuery = $this->db->prepare("SELECT * FROM users WHERE email=?");
+            $validateQuery->execute(array($userEmail));
+            $validate = $validateQuery->fetch(PDO::FETCH_OBJ);
+            if (empty($validate)) {
+                $role = 0;
+                $query = $this->db->prepare("INSERT INTO users(email,password,role_id) VALUES(?,?,?)");
+                $query->execute(array($userEmail, $userPassword, $role));
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 }

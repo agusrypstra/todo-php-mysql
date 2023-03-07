@@ -9,20 +9,23 @@ class LoginView
 
     }
 
-    function showLogin()
+    function showLogin($message = null)
     {
         $smarty = new Smarty();
-        $smarty->display('../templates/login.tpl');
+        $smarty->assign("message", $message);
+        $smarty->display('../templates/user/login.tpl');
     }
-    function showRegister()
+    function showRegister($message = null)
     {
         $smarty = new Smarty();
-        $smarty->display('../templates/register.tpl');
+        $smarty->assign("message", $message);
+        $smarty->display('../templates/user/register.tpl');
 
     }
     function showLoginLocation()
     {
-        header("Location:" . BASE_URL . "login");
+        $smarty = new Smarty();
+        $smarty->display('../templates/user/login.tpl');
     }
     function showHomeLocation()
     {

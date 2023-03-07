@@ -40,19 +40,31 @@ class TaskModel
         $task = $query->fetch(PDO::FETCH_OBJ);
         return $task;
     }
-    function createTaskDB($title, $description, $priority, $finished, $category)
+    function createTaskDB($title, $description, $priority, $category)
     {
-        $query = $this->db->prepare("INSERT INTO tasks(title, description, priority, finished, id_category) VALUES(?,?,?,?,?)");
-        $query->execute(array($title, $description, $priority, $finished, $category));
+        try {
+            $query = $this->db->prepare("INSERT INTO tasks(title, description, priority, id_category,status_id) VALUES(?,?,?,?,?)");
+            $query->execute(array($title, $description, $priority, $category, 0));
+            return $this->db->lastInsertId();
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
     function deleteTaskDB($id)
     {
-        $query = $this->db->prepare("DELETE FROM tasks WHERE id_task=?");
-        $query->execute(array($id));
+        try {
+            $queryComment = $this->db->prepare("DELETE FROM comments WHERE task_id=?");
+            $queryComment->execute(array($id));
+
+            $queryTask = $this->db->prepare("DELETE FROM tasks WHERE id_task=?");
+            $queryTask->execute(array($id));
+        } catch (\Exception $e) {
+            var_dump($e);
+        }
     }
-    function updateTaskDB($id)
+    function updateTaskDB($userId, $taskId, $status)
     {
-        $query = $this->db->prepare("UPDATE tasks SET finished=1 WHERE id_task=?");
-        $query->execute(array($id));
+        $query = $this->db->prepare("UPDATE tasks SET status_id=?, id_user=? WHERE id_task=?");
+        $query->execute(array($status, $userId, $taskId));
     }
 }
