@@ -5,6 +5,6 @@
 </h1>
 
 {include file="templates/layout/navbar.tpl"}
-{include file="templates/tasks/form.tpl" message=$message}
+
 {include file="templates/tasks/taskList.tpl" tasks=$tasks}
 {include file="templates/layout/footer.tpl"}

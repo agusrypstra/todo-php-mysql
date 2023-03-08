@@ -1,3 +1,10 @@
+{include file="templates/layout/header.tpl"}
+
+<h1 class="text-center m-5">
+    {$title|upper}
+</h1>
+
+{include file="templates/layout/navbar.tpl"}
 <div class="container text-center">
     <div class="row">
         <form method="post" action="createTask">
@@ -28,3 +35,4 @@
         </form>
     </div>
 </div>
+{include file="templates/layout/footer.tpl"}

@@ -1,27 +1,40 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-03-06 21:30:47
+/* Smarty version 4.2.1, created on 2023-03-08 01:05:51
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\tasks\form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_64064d7745b2a0_81319816',
+  'unifunc' => 'content_6407d15f34c542_58596562',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e36ec426a2666350826336d81df68c54fedcfb7a' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\tasks\\form.tpl',
-      1 => 1678134646,
+      1 => 1678233932,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:templates/layout/header.tpl' => 1,
+    'file:templates/layout/navbar.tpl' => 1,
+    'file:templates/layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_64064d7745b2a0_81319816 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="container text-center">
+function content_6407d15f34c542_58596562 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:templates/layout/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<h1 class="text-center m-5">
+    <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['title']->value ?? '', 'UTF-8');?>
+
+</h1>
+
+<?php $_smarty_tpl->_subTemplateRender("file:templates/layout/navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+<div class="container text-center">
     <div class="row">
         <form method="post" action="createTask">
             <div class="form-group">
@@ -60,5 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <button class="btn btn-primary" type="submit">Add order</button>
         </form>
     </div>
-</div><?php }
+</div>
+<?php $_smarty_tpl->_subTemplateRender("file:templates/layout/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

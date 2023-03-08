@@ -7,12 +7,13 @@ class UsersView
     {
 
     }
-    function showUsers($users, $role, $username)
+    function showUsers($users, $role, $username, $message = null)
     {
         $smarty = new Smarty();
         $smarty->assign('users', $users);
         $smarty->assign('role', $role);
         $smarty->assign('username', $username);
+        $smarty->assign('message', $message);
         $smarty->assign('title', "Users");
         $smarty->display('../templates/user/userList.tpl');
     }

@@ -11,7 +11,6 @@ class TaskView
     {
         $smarty = new Smarty();
         $smarty->assign('tasks', $tasks);
-        $smarty->assign('categories', $categories);
         $smarty->assign('role', $role);
         $smarty->assign('username', $username);
         $smarty->assign('message', $message);
@@ -24,15 +23,26 @@ class TaskView
         $smarty->display('../templates/tasks/taskLayoutCSR.tpl');
 
     }
-    function showAbout()
+    function showAbout($role)
     {
         $smarty = new Smarty();
+        $smarty->assign('role', $role);
         $smarty->display('../templates/about.tpl');
     }
-    function showTask($task)
+    function showForm($categories, $role, $username, $message = null)
+    {
+        $smarty = new Smarty();
+        $smarty->assign('categories', $categories);
+        $smarty->assign('role', $role);
+        $smarty->assign('username', $username);
+        $smarty->assign('message', $message);
+        $smarty->display('../templates/tasks/form.tpl');
+    }
+    function showTask($task, $role)
     {
         $smarty = new Smarty();
         $smarty->assign('task', $task);
+        $smarty->assign('role', $role);
         $smarty->display('../templates/tasks/task.tpl');
     }
     function showHomeLocation()

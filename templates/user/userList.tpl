@@ -6,9 +6,12 @@
 
 {include file="templates/layout/navbar.tpl" username=$username role=$role}
 <div class="container">
+    {if $message}
+        <p>{$message}</p>
+    {/if}
     {foreach from=$users item=$user}
         <ul class="list-group">
-            <li class="list-group-item">{$user->user_id} - {$user->email}
+            <li class="list-group-item">{$user->user_id} - {$user->email} - {$user->name}
                 {if $role==2}
                     <a href='deleteUser/{$user->user_id}' class="btn btn-outline-danger" type="button">Delete</a>
                     {if $user->role_id == 0}

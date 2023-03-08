@@ -2,6 +2,7 @@
 class TaskModel
 {
     private $db;
+    public $tasks;
     function __construct()
     {
         $this->db = new PDO(
@@ -16,8 +17,8 @@ class TaskModel
     {
         $query = $this->db->prepare("SELECT * FROM tasks JOIN categories ON tasks.id_category = categories.id_category");
         $query->execute();
-        $tasks = $query->fetchAll(PDO::FETCH_OBJ);
-        return $tasks;
+        $this->tasks = $query->fetchAll(PDO::FETCH_OBJ);
+        return $this->tasks;
     }
     function getCategories()
     {
@@ -26,16 +27,9 @@ class TaskModel
         $categories = $query->fetchAll(PDO::FETCH_OBJ);
         return $categories;
     }
-    function addCategory($category)
-    {
-        $query = $this->db->prepare("INSERT INTO categories(id_category,name) VALUES (?,?)");
-        $query->execute(array('', $category));
-        $categories = $query->fetchAll(PDO::FETCH_OBJ);
-        return $categories;
-    }
     function getTask($id)
     {
-        $query = $this->db->prepare("SELECT * FROM tasks JOIN categories ON tasks.id_category = categories.id_category WHERE id_task=?");
+        $query = $this->db->prepare("SELECT * FROM tasks AS t,categories AS c WHERE t.id_category = c.id_category;");
         $query->execute(array($id));
         $task = $query->fetch(PDO::FETCH_OBJ);
         return $task;

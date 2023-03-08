@@ -15,7 +15,7 @@ class UserModel
     }
     function getUsers()
     {
-        $query = $this->db->prepare("SELECT * FROM users");
+        $query = $this->db->prepare("SELECT * FROM users as u,roles as r WHERE u.role_id = r.role_id AND u.role_id != 2");
         $query->execute();
         $users = $query->fetchAll(PDO::FETCH_OBJ);
         return $users;

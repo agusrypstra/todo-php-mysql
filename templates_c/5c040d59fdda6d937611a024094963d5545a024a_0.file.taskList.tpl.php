@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-03-06 21:07:00
+/* Smarty version 4.2.1, created on 2023-03-08 00:17:09
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\tasks\taskList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_640647e46e8ba3_91670205',
+  'unifunc' => 'content_6407c5f5a18374_26536633',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c040d59fdda6d937611a024094963d5545a024a' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\tasks\\taskList.tpl',
-      1 => 1678133215,
+      1 => 1678231028,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_640647e46e8ba3_91670205 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6407c5f5a18374_26536633 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container text-center">
     <div class="row">
         <div class="col">
@@ -39,7 +39,7 @@ $_smarty_tpl->tpl_vars['task']->do_else = false;
                                 <h5 class="card-title"><?php echo $_smarty_tpl->tpl_vars['task']->value->title;?>
 </h5>
                             </a>
-                            <h6><?php echo $_smarty_tpl->tpl_vars['task']->value->id_category;?>
+                            <h6><?php echo $_smarty_tpl->tpl_vars['task']->value->name;?>
 </h6>
                             <h6 class="card-subtitle mb-2 text-muted">Order n° <?php echo $_smarty_tpl->tpl_vars['task']->value->id_task;?>
 </h6>

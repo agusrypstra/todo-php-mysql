@@ -26,42 +26,78 @@ class TaskController
     }
     function showHome()
     {
-        if ($this->authHelper->checkLoggedIn()) {
-            return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+        try {
+            if ($this->authHelper->checkLoggedIn()) {
+                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+            }
+            return $this->view->showLogin();
+        } catch (Exception $e) {
+            echo $e;
         }
-        return $this->view->showLogin();
     }
     function showAbout()
     {
-        $this->view->showAbout();
+        try {
+            $this->view->showAbout($this->role);
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+    function showForm()
+    {
+        try {
+            $this->view->showForm($this->tasks, $this->categories, $this->role);
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
     function showTask($id)
     {
-        $this->authHelper->checkLoggedIn();
-        $task = $this->model->getTask($id);
-        $this->view->showTask($task);
+        try {
+            $this->authHelper->checkLoggedIn();
+            $task = $this->model->getTask($id);
+            $this->view->showTask($task, $this->role);
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 
     function addTask()
     {
-        if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['priority']) || empty($_POST['category'])) {
-            return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Some fields are empty");
+        try {
+            if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['priority']) || empty($_POST['category'])) {
+                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Some fields are empty");
+            }
+            $newTask = $this->model->createTaskDB($_POST["title"], $_POST["description"], $_POST["priority"], $_POST['category']);
+            if (empty($newTask)) {
+                $this->tasks = $this->model->getTasks();
+                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Something went wrong");
+            }
+            $this->tasks = $this->model->getTasks();
+            return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+        } catch (Exception $e) {
+            echo $e;
         }
-        $this->model->createTaskDB($_POST["title"], $_POST["description"], $_POST["priority"], $_POST['category']);
-        $this->tasks = $this->model->getTasks();
-        $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
     }
     function deleteTask($id)
     {
-        $this->model->deleteTaskDB($id);
-        $this->tasks = $this->model->getTasks();
-        $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+        try {
+            $this->model->deleteTaskDB($id);
+            $this->tasks = $this->model->getTasks();
+            $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
     function updateTask($taskId, $status)
     {
-        $userId = $this->authHelper->getUserId();
-        $this->model->updateTaskDB($userId, $taskId, $status);
-        $this->tasks = $this->model->getTasks();
-        $this->showHome();
+        try {
+            $userId = $this->authHelper->getUserId();
+            $this->model->updateTaskDB($userId, $taskId, $status);
+            $this->tasks = $this->model->getTasks();
+            $this->showHome();
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 }

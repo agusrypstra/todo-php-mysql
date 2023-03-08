@@ -9,7 +9,7 @@
                             <a href='task/{$task->id_task}'>
                                 <h5 class="card-title">{$task->title}</h5>
                             </a>
-                            <h6>{$task->id_category}</h6>
+                            <h6>{$task->name}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">Order n° {$task->id_task}</h6>
                             <p class="card-text">{$task->description}</p>
                             <p>{$task->priority}</p>

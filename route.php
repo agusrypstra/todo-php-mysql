@@ -33,6 +33,9 @@ switch ($params[0]) {
     case 'register':
         $loginController->showRegister();
         break;
+    case 'form':
+        $taskController->showForm();
+        break;
     case 'verifyLogin':
         $loginController->verifyLogin();
         break;

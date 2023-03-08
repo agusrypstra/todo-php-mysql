@@ -17,10 +17,11 @@ class ApiUserController
     }
     function getToken($params = [])
     {
-        //verificar header basic user::password
-        //chequear login en bbdd
-        // retornar token
-        $userCredentials = $this->authHelper->getBasic();
-        var_dump($userCredentials);
+        try {
+            $userCredentials = $this->authHelper->getBasic();
+            var_dump($userCredentials);
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 }

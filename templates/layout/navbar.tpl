@@ -2,6 +2,9 @@
   <div class="container-fluid">
     <a class="nav-link" href="home">Home</a>
     <a class="nav-link" href="about">About</a>
+    {if $role==2 OR $role==1}
+      <a class="nav-link" href="form">Add task</a>
+    {/if}
     {if $role=2}
       <a class="nav-link" href="users">Users</a>
     {/if}
