@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-03-08 01:05:51
+/* Smarty version 4.2.1, created on 2023-03-14 14:49:30
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\tasks\form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6407d15f34c542_58596562',
+  'unifunc' => 'content_64107b6ab33d61_66244461',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e36ec426a2666350826336d81df68c54fedcfb7a' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\tasks\\form.tpl',
-      1 => 1678233932,
+      1 => 1678801769,
       2 => 'file',
     ),
   ),
@@ -23,22 +23,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6407d15f34c542_58596562 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64107b6ab33d61_66244461 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/layout/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+$_smarty_tpl->_subTemplateRender("file:templates/layout/navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-
 <h1 class="text-center m-5">
     <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['title']->value ?? '', 'UTF-8');?>
 
 </h1>
-
-<?php $_smarty_tpl->_subTemplateRender("file:templates/layout/navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
 <div class="container text-center">
     <div class="row">
         <form method="post" action="createTask">
             <div class="form-group">
-                <label for="title">Text</label>
+                <label for="title">Title</label>
                 <input id="title" class="form-control" type="Title" name="title">
             </div>
             <div class="form-group">

@@ -15,8 +15,15 @@ class TaskModel
     }
     function getTasks()
     {
-        $query = $this->db->prepare("SELECT * FROM tasks JOIN categories ON tasks.id_category = categories.id_category");
+        $query = $this->db->prepare("SELECT t.*,c.name,u.email FROM tasks t LEFT JOIN categories c ON t.id_category = c.id_category LEFT JOIN users u ON t.id_user = u.user_id");
         $query->execute();
+        $this->tasks = $query->fetchAll(PDO::FETCH_OBJ);
+        return $this->tasks;
+    }
+    function getTasksByType($type)
+    {
+        $query = $this->db->prepare("SELECT t.*,c.name,u.email FROM tasks t LEFT JOIN categories c ON t.id_category = c.id_category LEFT JOIN users u ON t.id_user = u.user_id WHERE t.id_category=?");
+        $query->execute(array($type));
         $this->tasks = $query->fetchAll(PDO::FETCH_OBJ);
         return $this->tasks;
     }

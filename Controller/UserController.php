@@ -18,8 +18,7 @@ class UserController
     {
         try {
             $role = $this->authHelper->getRole();
-            var_dump($role);
-            if ($role != 2) {
+            if ($role[0] != 2) {
                 return $this->view->showHomeLocation();
             }
             $users = $this->model->getUsers();

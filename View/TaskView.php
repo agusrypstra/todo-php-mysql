@@ -13,42 +13,40 @@ class TaskView
         $smarty->assign('tasks', $tasks);
         $smarty->assign('role', $role);
         $smarty->assign('username', $username);
+        $smarty->assign('categories', $categories);
         $smarty->assign('message', $message);
-        $smarty->assign('title', "WORKSHOP TASKS");
+        $smarty->assign('title', "Work devices");
         $smarty->display('../templates/layout/home.tpl');
     }
-    function showHomeLayout()
-    {
-        $smarty = new Smarty();
-        $smarty->display('../templates/tasks/taskLayoutCSR.tpl');
-
-    }
-    function showAbout($role)
+    function showAbout($username = null, $role = null)
     {
         $smarty = new Smarty();
         $smarty->assign('role', $role);
-        $smarty->display('../templates/about.tpl');
+        $smarty->assign('username', $username);
+        $smarty->display('templates\about.tpl');
     }
     function showForm($categories, $role, $username, $message = null)
     {
         $smarty = new Smarty();
+        $smarty->assign('title', "Add task");
         $smarty->assign('categories', $categories);
         $smarty->assign('role', $role);
         $smarty->assign('username', $username);
         $smarty->assign('message', $message);
         $smarty->display('../templates/tasks/form.tpl');
     }
-    function showTask($task, $role)
+    function showTask($task, $role, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('task', $task);
         $smarty->assign('role', $role);
+        $smarty->assign('username', $username);
+
         $smarty->display('../templates/tasks/task.tpl');
     }
     function showHomeLocation()
     {
-        $smarty = new Smarty();
-        $smarty->display("../templates/tasks/taskList.tpl");
+        header("Location:" . BASE_URL . "home");
     }
     function showLogin($message = null)
     {

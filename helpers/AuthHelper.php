@@ -19,7 +19,15 @@ class AuthHelper
         }
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != NULL) {
-                return $_SESSION['role'];
+                if ($_SESSION['role'] == 2) {
+                    return array(2, "admin");
+                }
+                if ($_SESSION['role'] == 1) {
+                    return array(1, "editor");
+                }
+                if ($_SESSION['role'] == 0) {
+                    return array(0, "viewer");
+                }
             }
         }
     }

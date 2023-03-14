@@ -24,21 +24,23 @@ class TaskController
         $this->role = $this->authHelper->getRole();
         $this->username = $this->authHelper->getUsername();
     }
-    function showHome()
+    function showHome($params = null)
     {
         try {
-            if ($this->authHelper->checkLoggedIn()) {
+            if (isset($_GET['type']) && !empty($_GET['type'])) {
+                $this->tasks = $this->model->getTasksByType($_GET['type']);
+                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+            } else {
                 return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
             }
-            return $this->view->showLogin();
         } catch (Exception $e) {
-            echo $e;
+            echo $e->getMessage();
         }
     }
     function showAbout()
     {
         try {
-            $this->view->showAbout($this->role);
+            $this->view->showAbout($this->username, $this->role);
         } catch (Exception $e) {
             echo $e;
         }
@@ -46,7 +48,7 @@ class TaskController
     function showForm()
     {
         try {
-            $this->view->showForm($this->tasks, $this->categories, $this->role);
+            $this->view->showForm($this->categories, $this->role, $this->username);
         } catch (Exception $e) {
             echo $e;
         }
@@ -54,9 +56,11 @@ class TaskController
     function showTask($id)
     {
         try {
-            $this->authHelper->checkLoggedIn();
             $task = $this->model->getTask($id);
-            $this->view->showTask($task, $this->role);
+            if (empty($task)) {
+                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Task doesn't exists.");
+            }
+            return $this->view->showTask($task, $this->role, $this->username);
         } catch (Exception $e) {
             echo $e;
         }
@@ -66,15 +70,18 @@ class TaskController
     {
         try {
             if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['priority']) || empty($_POST['category'])) {
-                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Some fields are empty");
+                return $this->view->showForm($this->categories, $this->role, $this->username, "Some fields are empty");
+            }
+            if ($_POST['priority'] > 5 || $_POST['priority'] < 1) {
+                return $this->view->showForm($this->categories, $this->role, $this->username, "Priority only from 1 to 5");
             }
             $newTask = $this->model->createTaskDB($_POST["title"], $_POST["description"], $_POST["priority"], $_POST['category']);
             if (empty($newTask)) {
                 $this->tasks = $this->model->getTasks();
-                return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username, "Something went wrong");
+                return $this->view->showForm($this->categories, $this->role, $this->username, "Something went wrong");
             }
             $this->tasks = $this->model->getTasks();
-            return $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+            return $this->view->showHomeLocation();
         } catch (Exception $e) {
             echo $e;
         }
@@ -84,7 +91,7 @@ class TaskController
         try {
             $this->model->deleteTaskDB($id);
             $this->tasks = $this->model->getTasks();
-            $this->view->showHome($this->tasks, $this->categories, $this->role, $this->username);
+            $this->view->showHomeLocation();
         } catch (Exception $e) {
             echo $e;
         }
@@ -95,7 +102,7 @@ class TaskController
             $userId = $this->authHelper->getUserId();
             $this->model->updateTaskDB($userId, $taskId, $status);
             $this->tasks = $this->model->getTasks();
-            $this->showHome();
+            $this->view->showHomeLocation();
         } catch (Exception $e) {
             echo $e;
         }

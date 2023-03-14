@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-03-08 00:58:04
+/* Smarty version 4.2.1, created on 2023-03-14 13:40:27
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\layout\navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6407cf8c267073_27649348',
+  'unifunc' => 'content_64106b3b90ecb0_17174426',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4db26d5cb7dde234beb20c15b7192e2c2320337' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\layout\\navbar.tpl',
-      1 => 1678233482,
+      1 => 1678797622,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,51 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6407cf8c267073_27649348 (Smarty_Internal_Template $_smarty_tpl) {
-?><nav class="navbar" style="background-color: #9CE2EE;">
-  <div class="container-fluid">
-    <a class="nav-link" href="home">Home</a>
-    <a class="nav-link" href="about">About</a>
-    <?php if ($_smarty_tpl->tpl_vars['role']->value == 2 || $_smarty_tpl->tpl_vars['role']->value == 1) {?>
-      <a class="nav-link" href="form">Add task</a>
-    <?php }?>
-    <?php $_prefixVariable1 = 2;
-$_smarty_tpl->_assignInScope('role', $_prefixVariable1);
-if ($_prefixVariable1) {?>
-      <a class="nav-link" href="users">Users</a>
-    <?php }?>
-    <form class="d-flex" action="logout" method="post">
-      <button class="btn btn-outline-danger" type="submit">Logout</button>
-    </form>
+function content_64106b3b90ecb0_17174426 (Smarty_Internal_Template $_smarty_tpl) {
+?><nav class="navbar">
+  <a class="navbar-toggler toggler-example" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+    aria-controls="offcanvasExample">
+    <span class="navbar-toggler-icon">
+  </a>
+
+  <div class="offcanvas offcanvas-start d-flex" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-0">
+      <div>
+        <div class="d-flex justify-content-center">
+          <div class="card border-0 d-flex justify-content-center align-items-center" style="width: 18rem;">
+            <img src="img\blank-profile-picture-973460__340.png" class="rounded-circle" style="width: 66%" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+ - <span><?php echo $_smarty_tpl->tpl_vars['role']->value[1];?>
+</span></h5>
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item m-2"><a class="nav-link" href="home">Home</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['role']->value[0] == 2 || $_smarty_tpl->tpl_vars['role']->value == 1) {?>
+              <li class="list-group-item m-2"><a class="nav-link" href="form">Add task</a></li>
+            <?php }?>
+            <?php if ($_smarty_tpl->tpl_vars['role']->value[0] == 2) {?>
+              <li class="list-group-item m-2"><a class="nav-link" href="users">Users</a></li>
+            <?php }?>
+            <li class="list-group-item m-2"><a class="nav-link" href="about">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end p-2">
+        <form class="d-flex" action="logout" method="post">
+          <button class="btn btn-outline-danger" type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
   </div>
-</nav><?php }
+</nav>
+<?php }
 }

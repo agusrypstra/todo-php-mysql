@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-02-13 19:32:19
+/* Smarty version 4.2.1, created on 2023-03-14 13:59:41
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\layout\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_63ea8233500e04_58919162',
+  'unifunc' => 'content_64106fbd714e92_07743044',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fcc60eca1a468435ce8297ca7f5c8cf49d72770c' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\layout\\header.tpl',
-      1 => 1675351895,
+      1 => 1678798780,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63ea8233500e04_58919162 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64106fbd714e92_07743044 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -35,5 +35,7 @@ function content_63ea8233500e04_58919162 (Smarty_Internal_Template $_smarty_tpl)
   <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"><?php echo '</script'; ?>
 >
-</head><?php }
+</head>
+
+<body class="d-flex flex-column min-vh-100"><?php }
 }
