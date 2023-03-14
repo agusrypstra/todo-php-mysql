@@ -19,7 +19,11 @@
             <div class="col">
                 <h2>Pending</h2>
 
+
+
             {foreach from=$tasks item=$task}
+
+
 
                 {if $task->status_id == 0}
                         <div class="card m-2" style="width: 18rem;">
@@ -32,22 +36,36 @@
                                 <p class="card-text">{$task->description}</p>
                                 <p>Priority: {$task->priority}</p>
 
-                    {if $role[0]!=0}
-                                    <a href='deleteTask/{$task->id_task}' class="btn btn-danger">Delete</a>
-                                    <a href='updateTask/{$task->id_task}/1' class="btn btn-secondary">Take task</a>
+
+
+                    {if $role}
+
+                        {if $role[0]!=0}
+                                        <a href='deleteTask/{$task->id_task}' class="btn btn-danger">Delete</a>
+                                        <a href='updateTask/{$task->id_task}/1' class="btn btn-secondary">Take task</a>
+
+                        {/if}
 
                     {/if}
                             </div>
                         </div>
 
+
+
                 {/if}
+
+
 
             {/foreach}
             </div>
             <div class="col">
                 <h2>In course</h2>
 
+
+
             {foreach from=$tasks item=$task}
+
+
 
                 {if $task->status_id == 1}
                         <div class="card m-2" style="width: 18rem;">
@@ -60,14 +78,22 @@
                                 <p class="card-text">{$task->description}</p>
                                 <p>Priority: {$task->priority}</p>
 
+
+
                     {if $task->email == $username}
                                     <a href='updateTask/{$task->id_task}/0' class="btn btn-secondary">Leave order</a>
                                     <a href='updateTask/{$task->id_task}/2' class="btn btn-secondary">End task</a>
 
+
+
                     {/if}
+
+
 
                     {if $role[0]==2}
                                     <a href='deleteTask/{$task->id_task}' class="btn btn-danger">Delete</a>
+
+
 
 
                     {/if}
@@ -75,7 +101,11 @@
                         </div>
 
 
+
+
                 {/if}
+
+
 
 
             {/foreach}
@@ -83,7 +113,11 @@
             <div class="col">
                 <h2>Finished</h2>
 
+
+
             {foreach from=$tasks item=$task}
+
+
 
                 {if $task->status_id == 2}
                         <div class="card m-2" style="width: 18rem;">
@@ -95,6 +129,8 @@
                                 <h6 class="card-subtitle mb-2 text-muted">Order n° {$task->id_task}</h6>
                                 <p class="card-text">{$task->description}</p>
                                 <p>Finished by {$task->email}</p>
+
+
 
                     {if $role[0]!=0}
                                     <a href='deleteTask/{$task->id_task}' class="btn btn-danger">Delete</a>

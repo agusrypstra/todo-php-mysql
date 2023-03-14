@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2023-03-14 14:49:30
+/* Smarty version 4.2.1, created on 2023-03-14 14:55:57
   from 'E:\xampp\htdocs\web2\todolist-practice-1\templates\tasks\form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_64107b6ab33d61_66244461',
+  'unifunc' => 'content_64107ced8467c1_73226447',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e36ec426a2666350826336d81df68c54fedcfb7a' => 
     array (
       0 => 'E:\\xampp\\htdocs\\web2\\todolist-practice-1\\templates\\tasks\\form.tpl',
-      1 => 1678801769,
+      1 => 1678802106,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_64107b6ab33d61_66244461 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64107ced8467c1_73226447 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:templates/layout/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:templates/layout/navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -43,7 +43,7 @@ $_smarty_tpl->_subTemplateRender("file:templates/layout/navbar.tpl", $_smarty_tp
                 <input id="description" class="form-control" type="text" name="description">
             </div>
             <div class="form-group">
-                <label for="priority">Priority</label>
+                <label for="priority">Priority 1-5</label>
                 <input id="priority" class="form-control" type="number" name="priority">
             </div>
             <div class="form-group">
